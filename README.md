@@ -5,9 +5,10 @@ Currently supports:
 
 
 More features coming:
-- A* Algorithm
-- N Queen's
-- Merge Sort & Quick Sort
+- A* Algorithm - a more optimal path finding algorithms. Faster than Dijkstra's.
+- N Queen's - a puzzle for placing N queens on a N x N board.
+- Merge Sort - a sorting algorithm that uses the divide and conquer approach.
+- Quick Sort - another divide and conquer sorting algorithm.
 
 <img src="https://github.com/xdeng9/algorithm-visualizer/blob/master/screen/demo0.gif" />
 <img src="https://github.com/xdeng9/algorithm-visualizer/blob/master/screen/demo2.gif" />
