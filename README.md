@@ -2,11 +2,11 @@
 
 Algorithm Visualizer is a tool for visualizing different algorithms. This app is built using JavaScript and React.
 
-Currently supports:
+## Currently supports:
 - Dijkstra's Algorithm - an algorithm for finding the shortest path. I implemented it with a Priority Queue.
 
 
-More features coming:
+## More features coming:
 - A* Algorithm - a more optimal path finding algorithms. Faster than Dijkstra's.
 - N Queen's - a puzzle for placing N queens on a N x N board.
 - Merge Sort - a sorting algorithm that uses the divide and conquer approach.
