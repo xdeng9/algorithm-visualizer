@@ -1,0 +1,74 @@
+.grid-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gcp {
+    display: flex;
+    justify-content: center;
+}
+
+.controlls {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+}
+
+.start-btn {
+    margin-right: 32px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1050px;
+    min-width: 1050px;
+    padding: 8px;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    outline: 1px solid lightgray; 
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+.start {
+    background-image: url('./star-solid.svg');
+    background-repeat: no-repeat;
+}
+
+.finish {
+    background-image: url('./flag-solid.svg');
+    background-repeat: no-repeat;
+}
+
+.wall {
+    background-color: slategray;
+}
+
+.visit {
+    background-color: royalblue;
+    animation: dijstra 1.5s ease-out;
+}
+
+.path {
+    background-color: rgb(106, 187, 106);
+}
+
+@keyframes dijstra {
+  33% {
+    transform: scale(.3);
+    background-color: gold;
+    border-radius: 100%;
+  }
+  66% {
+    background-color: white;
+  }
+  100% {
+    transform: scale(1.5);
+    background-color: purple;
+  }
+}

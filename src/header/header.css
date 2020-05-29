@@ -1,0 +1,42 @@
+.header-container {
+    color: white;
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 24px 0 24px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 22px;
+    font-style: normal;
+}
+
+.menu-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 12px 0;
+}
+
+li a {
+  color: white;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.hover {
+    cursor: pointer;
+    outline: none;
+}
+
+.active {
+  background-color: black;
+}
