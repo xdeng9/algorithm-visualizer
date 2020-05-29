@@ -47,7 +47,31 @@ More features coming:
             pq.add(new Node(neighbor, distance[neighbor]));
         }
     }
-
+      ...
   }
 
+```
+
+```JavaScript
+PriorityQueue.prototype.heapifyUp = function () {
+    let index = this.size - 1;
+    while (this.hasParent(index) && this.parent(index).d > this.items[index].d) {
+        this.swap(index, this.getParentIndex(index));
+        index = this.getParentIndex(index);
+    }
+}
+
+PriorityQueue.prototype.heapifyDown = function() {
+    let index = 0;
+    while (this.hasLeftChild(index)) {
+        let smallerChildIndex = this.getLeftChildIndex(index);
+        if (this.hasRightChild(index) && this.rightChild(index).d < this.leftChild(index).d) {
+            smallerChildIndex = this.getRightChildIndex(index);
+        }
+
+        if (this.items[index] < this.items[smallerChildIndex]) break;
+        this.swap(index, smallerChildIndex);
+        index = smallerChildIndex;
+    }
+}
 ```
