@@ -147,19 +147,24 @@ class Grid extends React.Component {
   animate() {
     let { grid, start, end } = this.state;
     if (this.props.algoType === "dijkstra") {
-        let { time, shortestPath } = this.props.dijkstraSearch(
+        let res = this.props.dijkstraSearch(
           start,
           end,
           grid.length,
           grid[0].length
         );
-
-        setTimeout(() => {
+        
+        if (res === null) {
+          alert('No path found');
+        } else {
+          let { time, shortestPath } = res;
+          setTimeout(() => {
             for (let i = 0; i < shortestPath.length; i++) {
-                 console.log('hello');
-                document.getElementById(shortestPath[i]).classList.add('path');
+              document.getElementById(shortestPath[i]).classList.add('path');
             }
-        }, time)
+          }, time)
+        }
+        
     }
   }
 

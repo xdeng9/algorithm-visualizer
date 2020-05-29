@@ -29,7 +29,10 @@ class Dijkstra extends React.Component {
     pq.add(new Node(src, 0));
  
     while (!visited.has(tar)) {
-
+        if (pq.size === 0) {
+          console.log('trapped!')
+          return null;
+        }
         let curNode = pq.remove();
         if (visited.has(curNode.k)) {
             continue;
@@ -50,7 +53,9 @@ class Dijkstra extends React.Component {
                 distance[neighbor] = newDistance;
                 path[neighbor] = curNode;
             }
-            pq.add(new Node(neighbor, distance[neighbor]));
+            if (!visited.has(neighbor)) {
+              pq.add(new Node(neighbor, distance[neighbor]));
+            }
         }
     }
         time = offset * 10 + 1500;

@@ -58,6 +58,10 @@ PriorityQueue.prototype.add = function(node) {
     this.heapifyUp();
 }
 
+PriorityQueue.prototype.size = function() {
+    return this.size;
+}
+
 PriorityQueue.prototype.heapifyUp = function () {
     let index = this.size - 1;
     while (this.hasParent(index) && this.parent(index).d > this.items[index].d) {
