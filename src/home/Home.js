@@ -18,9 +18,23 @@ class Home extends React.Component {
                 <div class="modal" id="modal">
                     <div class="modal-guts">
                         <h1>About</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
-
+                        <p>Hello, thank you for checking out my app. 
+                            My name is Joseph Deng. I created this algorithm visualizer using React because I think this is
+                            a great way to solidify my understanding of how different algorithms work.</p>
+                        <p>To get started, click on any of the algorithms from the top menu, and click the start button
+                            to see it in action. 
+                        </p>
+                        <p>
+                            Currently supports:
+                            <li>
+                                Dijkstra's - an algorithm for finding the shortest path. 
+                            </li>
+                            <br/>
+                            Work in progress:
+                            <li>
+                                A* Algorithm - a more optimal path finding algorithm. Faster than Dijkstra's.
+                            </li>
+                        </p>
                     </div>
                 </div>
             </div>
