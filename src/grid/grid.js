@@ -185,7 +185,10 @@ class Grid extends React.Component {
   }
 
   animate() {
+
+    this.clearGraph();
     let { grid, start, end } = this.state;
+
     if (this.props.algoType === "dijkstra") {
         let res = this.props.dijkstraSearch(
           start,
@@ -208,8 +211,17 @@ class Grid extends React.Component {
     }
   }
 
+  clearGraph() {
+    for (let i = 0; i < this.state.grid.length; i++) {
+      for (let j = 0; j < this.state.grid[0].length; j++) {
+        document.getElementById(`${i}-${j}`).classList.remove("visit");
+        document.getElementById(`${i}-${j}`).classList.remove("path");
+      }
+    }
+  }
+
   handleReset(e) {
-      e.preventDefault();
+    e.preventDefault();
     for (let i = 0; i < this.state.grid.length; i++) {
       for (let j = 0; j < this.state.grid[0].length; j++) {
         document.getElementById(`${i}-${j}`).classList.remove("visit");
@@ -219,6 +231,7 @@ class Grid extends React.Component {
         document.getElementById(`${i}-${j}`).classList.remove("finish");
       }
     }
+
       this.setState({
           start: [10, 8],
           end: [10, 42]
