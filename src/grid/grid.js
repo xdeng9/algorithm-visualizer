@@ -19,6 +19,7 @@ class Grid extends React.Component {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleOutbounds = this.handleOutbounds.bind(this);
   }
 
   componentDidMount() {
@@ -114,6 +115,7 @@ class Grid extends React.Component {
   }
 
   handleMouseUp(e) {
+    e.preventDefault();
     let pos = this.parseIdToPos(e.currentTarget.id);
 
     if (!this.isStartOrEnd(pos)) {
@@ -152,7 +154,6 @@ class Grid extends React.Component {
         });
       }
     }
-    
   }
 
   isStartOrEnd(pos) {
@@ -227,6 +228,21 @@ class Grid extends React.Component {
       })
   }
 
+  handleOutbounds(e) {
+    e.preventDefault();
+    if (!this.state.isMousePressed) return;
+
+    if (this.startSelected) {
+      document.getElementById(this.parsePosToId(this.lastPos)).classList.add('start');
+      this.startSelected = false;
+      this.setState({ isMousePressed: false, start: this.lastPos });
+    } else if (this.endSelected) {
+      document.getElementById(this.parsePosToId(this.lastPos)).classList.add('finish');
+      this.endSelected = false;
+      this.setState({ isMousePressed: false, end: this.lastPos });
+    }
+  }
+
   render() {
 
     return (
@@ -240,7 +256,9 @@ class Grid extends React.Component {
           </button>
         </div>
         <div className="gcp">
-          <div className="grid-container">{this.state.grid}</div>
+          <div className="grid-container" onMouseLeave={this.handleOutbounds}>
+            {this.state.grid}
+          </div>
         </div>
       </div>
     );
