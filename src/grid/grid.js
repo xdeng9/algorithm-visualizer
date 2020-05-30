@@ -8,6 +8,7 @@ class Grid extends React.Component {
     this.cols = 50;
     this.startSelected = false;
     this.endSelected = false;
+    this.lastPos = [0, 0];
     this.state = {
       grid: [],
       start: [10, 8],
@@ -51,11 +52,14 @@ class Grid extends React.Component {
   }
 
   handleMouseDown(e) {
+    e.preventDefault();
+
     let pos = e.currentTarget.id.split("-");
     if (
       parseInt(pos[0]) === this.state.start[0] &&
       parseInt(pos[1]) === this.state.start[1]
     ) {
+      this.lastPos = this.parseIdToPos(e.currentTarget.id);
       this.startSelected = true;
     } else {
       this.startSelected = false;
@@ -65,6 +69,7 @@ class Grid extends React.Component {
       parseInt(pos[0]) === this.state.end[0] &&
       parseInt(pos[1]) === this.state.end[1]
     ) {
+      this.lastPos = this.parseIdToPos(e.currentTarget.id);
       this.endSelected = true;
     } else {
       this.endSelected = false;
@@ -79,9 +84,12 @@ class Grid extends React.Component {
     if (!this.startSelected && !this.endSelected) {
         
     } else {
+      if (!this.isStartOrEnd([i, j])) {
+        this.lastPos = [i, j];
         if (this.startSelected)
-            cell.classList.add('start');
+          cell.classList.add('start');
         else cell.classList.add("finish");
+      }
     }
   }
 
@@ -95,41 +103,72 @@ class Grid extends React.Component {
             else cell.classList.add("wall");
         }
     } else {
-      if (this.startSelected) 
+      if (this.startSelected) {
         document.getElementById(`${i}-${j}`).classList.remove("start");
-      else document.getElementById(`${i}-${j}`).classList.remove("finish");
+      }
+      else {
+        document.getElementById(`${i}-${j}`).classList.remove("finish");
+      } 
+      this.lastPos = [i, j];
     }
   }
 
   handleMouseUp(e) {
     let pos = this.parseIdToPos(e.currentTarget.id);
-    if (this.startSelected) {
-      document.getElementById(e.currentTarget.id).classList.add("start");
-      if (pos[0] !== this.state.start[0] && pos[1] !== this.state.start[1])
-        this.getStartElement().classList.remove("start");
-      this.setState({
-        isMousePressed: false,
-        start: this.parseIdToPos(e.currentTarget.id),
-      });
-    } else if (this.endSelected) {
-      document.getElementById(e.currentTarget.id).classList.add("finish");
-      if (pos[0] !== this.state.end[0] && pos[1] !== this.state.end[1])
-        this.getEndElement().classList.remove("finish");
-      this.setState({
-        isMousePressed: false,
-        end: this.parseIdToPos(e.currentTarget.id),
-      });
-    } else {
+
+    if (!this.isStartOrEnd(pos)) {
+      if (this.startSelected) {
+        document.getElementById(e.currentTarget.id).classList.add("start");
+        this.setState({
+          isMousePressed: false,
+          start: this.parseIdToPos(e.currentTarget.id),
+        });
+      } else if (this.endSelected) {
+        document.getElementById(e.currentTarget.id).classList.add("finish");
+        this.setState({
+          isMousePressed: false,
+          end: this.parseIdToPos(e.currentTarget.id),
+        });
+      } else {
         let cell = document.getElementById(e.currentTarget.id);
         if (cell.classList.contains("wall")) cell.classList.remove("wall");
-        else cell.classList.add("wall");
+        else if (!this.isStartOrEnd(pos)) {
+          cell.classList.add("wall");
+        }
         this.setState({ isMousePressed: false });
+      }
+    } else {
+      if (this.startSelected) {
+        document.getElementById(this.parsePosToId(this.lastPos)).classList.add('start');
+        this.setState({
+          isMousePressed: false,
+          start: this.lastPos
+        });
+      } else if (this.endSelected) {
+        document.getElementById(this.parsePosToId(this.lastPos)).classList.add('finish');
+        this.setState({
+          isMousePressed: false,
+          end: this.lastPos
+        });
+      }
     }
+    
+  }
+
+  isStartOrEnd(pos) {
+    console.log(pos, this.state.start)
+    if (pos[0] === this.state.start[0] && pos[1] === this.state.start[1]) return true;
+    if (pos[0] === this.state.end[0] && pos[1] === this.state.end[1]) return true;
+    return false;
   }
 
   parseIdToPos(id) {
     let pos = id.split("-");
     return pos.map((el) => parseInt(el));
+  }
+
+  parsePosToId(pos) {
+    return `${pos[0]}-${pos[1]}`;
   }
 
   getStartElement() {
@@ -170,8 +209,15 @@ class Grid extends React.Component {
 
   handleReset(e) {
       e.preventDefault();
-      this.getStartElement().classList.remove('start');
-      this.getEndElement().classList.remove('finish');
+    for (let i = 0; i < this.state.grid.length; i++) {
+      for (let j = 0; j < this.state.grid[0].length; j++) {
+        document.getElementById(`${i}-${j}`).classList.remove("visit");
+        document.getElementById(`${i}-${j}`).classList.remove("wall");
+        document.getElementById(`${i}-${j}`).classList.remove("path");
+        document.getElementById(`${i}-${j}`).classList.remove("start");
+        document.getElementById(`${i}-${j}`).classList.remove("finish");
+      }
+    }
       this.setState({
           start: [10, 8],
           end: [10, 42]
@@ -179,13 +225,6 @@ class Grid extends React.Component {
           this.getStartElement().classList.add("start");
           this.getEndElement().classList.add("finish");
       })
-      for (let i = 0; i < this.state.grid.length; i++) {
-        for (let j = 0; j < this.state.grid[0].length; j++) {
-            document.getElementById(`${i}-${j}`).classList.remove("visit");
-            document.getElementById(`${i}-${j}`).classList.remove("wall");
-            document.getElementById(`${i}-${j}`).classList.remove("path");
-        }
-      }
   }
 
   render() {
