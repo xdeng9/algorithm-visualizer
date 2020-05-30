@@ -7,7 +7,7 @@ Algorithm Visualizer is a tool for visualizing different algorithms (see demos b
 
 
 ## Upcoming algorithms:
-- A* Algorithm - a more optimal path finding algorithms. Faster than Dijkstra's.
+- A* Algorithm - a more optimal path finding algorithm. Faster than Dijkstra's.
 - N Queen's - a puzzle for placing N queens on a N x N board. Can be solved using backtracking.
 - Merge Sort - a sorting algorithm that uses the divide and conquer approach.
 - Quick Sort - another divide and conquer sorting algorithm.
