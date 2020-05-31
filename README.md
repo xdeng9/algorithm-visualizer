@@ -1,4 +1,5 @@
 # Algorithm Visualizer
+[Try it out here](https://joedeng.me/algorithm-visualizer/#/)
 
 Algorithm Visualizer is a tool for visualizing different algorithms (see demos below). This app is built using JavaScript and React.
 
