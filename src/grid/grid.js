@@ -20,6 +20,8 @@ class Grid extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleOutbounds = this.handleOutbounds.bind(this);
+    this.handleTips = this.handleTips.bind(this);
+
   }
 
   componentDidMount() {
@@ -157,7 +159,6 @@ class Grid extends React.Component {
   }
 
   isStartOrEnd(pos) {
-    console.log(pos, this.state.start)
     if (pos[0] === this.state.start[0] && pos[1] === this.state.start[1]) return true;
     if (pos[0] === this.state.end[0] && pos[1] === this.state.end[1]) return true;
     return false;
@@ -256,6 +257,17 @@ class Grid extends React.Component {
     }
   }
 
+  handleTips() {
+    let tipsModal = document.querySelector('.tips');
+    let closeBtn = document.getElementById('close-btn');
+    tipsModal.style.display = 'block';
+
+    closeBtn.onclick = () => {
+      tipsModal.style.display = 'none';
+    }
+
+  }
+
   render() {
 
     return (
@@ -267,6 +279,20 @@ class Grid extends React.Component {
           <button className="reset-btn hover" onClick={this.handleReset}>
             Reset
           </button>
+          <button className="tips-btn hover" onClick={this.handleTips}>
+            Tips
+          </button>
+        </div>
+        <div className="tips" id="tips">
+          <button className="close-btn hover" id="close-btn">
+            X
+          </button>
+          <div className="pointers">
+            <p>Drag star to change the starting vertex. </p>
+            <p>Drag flag to change the ending vertex. </p>
+            <p>Press down on empty spaces to creat walls.</p>
+          </div>
+          <div className="tips-content"></div>
         </div>
         <div className="gcp">
           <div className="grid-container" onMouseLeave={this.handleOutbounds}>
