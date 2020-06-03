@@ -30,7 +30,6 @@ class Dijkstra extends React.Component {
  
     while (!visited.has(tar)) {
         if (pq.size === 0) {
-          console.log('trapped!')
           return null;
         }
         let curNode = pq.remove();

@@ -208,7 +208,22 @@ class Grid extends React.Component {
             }
           }, time)
         }
-        
+    } else if (this.props.algoType === "aStar") {
+      let path = this.props.aStarSearch(
+        start,
+        end,
+        grid.length,
+        grid[0].length)
+
+        if (path.length === 0) alert('No path found');
+        else {
+          let time = path.pop();
+          setTimeout(() => {
+            for (let i = 0; i < path.length; i++) {
+              document.getElementById(this.parsePosToId(path[i])).classList.add('path');
+            }
+          }, time + 1000);
+        }
     }
   }
 

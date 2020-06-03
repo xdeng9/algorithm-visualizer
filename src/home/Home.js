@@ -13,10 +13,10 @@ class Home extends React.Component {
     render() {
         return (
             <div className="home-box">
-                <div class="modal-overlay" id="modal-overlay"></div>
+                <div className="modal-overlay" id="modal-overlay"></div>
 
-                <div class="modal" id="modal">
-                    <div class="modal-guts">
+                <div className="modal" id="modal">
+                    <div className="modal-guts">
                         <h1>About</h1>
                         <p>Hello, thank you for checking out algorithm visualizer, a tool for visualizing different algorithms. 
                             I created this tool because I think this is

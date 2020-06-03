@@ -118,7 +118,7 @@ export const buildAdjList = (rows, cols) => {
       return shortestPath;
   }
 
-const getAdjNodes = (pos, H, W) => {
+export const getAdjNodes = (pos, H, W) => {
 
     const dirs = [
         [-1, 0],
