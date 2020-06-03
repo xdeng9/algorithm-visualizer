@@ -29,8 +29,8 @@ class Home extends React.Component {
                             <li>
                                 Dijkstra's - an algorithm for finding the shortest path. 
                             </li>
-                            <br/>
-                            Work in progress:
+                            {/* <br/>
+                            Work in progress: */}
                             <li>
                                 A* Algorithm - a more optimal path finding algorithm. Faster than Dijkstra's.
                             </li>
