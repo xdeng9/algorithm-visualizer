@@ -7,8 +7,9 @@ import { PriorityQueue, getAdjNodes } from './util';
 class AStar extends React.Component {
 
   componentDidMount() {
-    document.getElementById("dijkstra").classList.remove("active");
     document.getElementById("astar").classList.add("active");
+    document.getElementById("dijkstra").classList.remove("active");
+    document.getElementById("maze").classList.remove("active");
   }
 
   aStarSearch(start, end, row, col) {

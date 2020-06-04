@@ -21,6 +21,11 @@ const Header = () => {
               A* Search
             </Link>
           </li>
+          <li>
+            <Link to="/maze" className="hover" id="maze">
+              Maze
+            </Link>
+          </li>
         </ul>
       </div>
     );

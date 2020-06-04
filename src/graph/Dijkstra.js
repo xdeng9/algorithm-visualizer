@@ -8,6 +8,7 @@ class Dijkstra extends React.Component {
     componentDidMount() {
         document.getElementById('dijkstra').classList.add('active');
         document.getElementById("astar").classList.remove("active");
+        document.getElementById("maze").classList.remove("active");
     }
 
   dijkstraSearch(start, end, rows, cols) {
