@@ -18,6 +18,11 @@ class Maze extends React.Component {
         document.getElementById("astar").classList.remove("active");
     }
 
+    primesAlgo() {
+        let start = [0, 0];
+        let frontier = {};
+    }
+
     handleMaze(e) {
         e.preventDefault();
         document.getElementById('10-10').classList.add('hollow');

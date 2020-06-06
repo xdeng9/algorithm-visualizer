@@ -185,8 +185,16 @@ class Grid extends React.Component {
     );
   }
 
-  animate() {
+  disableEvents() {
+    document.querySelector('.grid-content').classList.add('disable')
+  }
 
+  enableEvents() {
+    document.querySelector('.grid-content').classList.remove('disable')
+  }
+
+  animate() {
+    this.disableEvents();
     this.clearGraph();
     let { grid, start, end } = this.state;
 
@@ -200,12 +208,14 @@ class Grid extends React.Component {
         
         if (res === null) {
           alert('No path found');
+          this.enableEvents();
         } else {
           let { time, shortestPath } = res;
           setTimeout(() => {
             for (let i = 0; i < shortestPath.length; i++) {
               document.getElementById(shortestPath[i]).classList.add('path');
             }
+            this.enableEvents();
           }, time)
         }
     } else if (this.props.algoType === "aStar") {
@@ -215,13 +225,16 @@ class Grid extends React.Component {
         grid.length,
         grid[0].length)
 
-        if (path.length === 0) alert('No path found');
-        else {
+        if (path.length === 0) {
+          alert('No path found');
+          this.enableEvents();
+        } else {
           let time = path.pop();
           setTimeout(() => {
             for (let i = 0; i < path.length; i++) {
               document.getElementById(this.parsePosToId(path[i])).classList.add('path');
             }
+            this.enableEvents();
           }, time + 1000);
         }
     }

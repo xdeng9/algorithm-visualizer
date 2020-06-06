@@ -125,3 +125,7 @@
     background-color: purple;
   }
 }
+
+.disable {
+  pointer-events: none;
+}
