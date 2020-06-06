@@ -1,0 +1,35 @@
+.maze-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;;
+    align-items: center;
+    background-color: darkgray;
+    height: 100vh;
+}
+
+.maze-controll {
+    display: flex;
+    justify-content: center;
+}
+
+.show-path-btn {
+    margin-left: 32px;
+}
+
+.maze-grid {
+    min-width: 900px;
+    max-width: 900px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.solid {
+    background-color: rgb(55, 55, 55);
+    width: 15px;
+    height: 15px;
+}
+
+.hollow {
+    background-color: white;
+}
