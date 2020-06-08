@@ -58,12 +58,12 @@ class Maze extends React.Component {
         let walls = new Set();
         this.markPos([0, 0]);
         let frontier = [[0, 1], [1, 0]];
+        let offset = 1;
         visited.add(this.posToId(start));
-        // document.getElementById(this.posToId(start)).classList.add('hollow');
+   
         for (let node of frontier) {
             walls.add(this.posToId(node));
         }
-        let offset = 1;
 
         while (frontier.length !== 0) {
             let randIndex = Math.floor(Math.random() * frontier.length);
@@ -81,7 +81,7 @@ class Maze extends React.Component {
                 this.markPos(newPos);
             }, 20 * offset)
             offset++;
-            debugger
+  
             let neighbors = this.getNeighbors(newPos, visited);
             for (let neighbor of neighbors) {
                 if (!walls.has(this.posToId(neighbor))) {
@@ -113,8 +113,6 @@ class Maze extends React.Component {
     }
 
     getNewPos(pos, visited) {
-        // let posId = this.posToId(pos)
-        // document.getElementById(posId).classList.add('hollow');
 
         let up = [pos[0] - 1, pos[1]];
         let down = [pos[0] + 1, pos[1]];
@@ -122,16 +120,12 @@ class Maze extends React.Component {
         let right = [pos[0], pos[1] + 1];
 
         if (visited.has(this.posToId(up))) {
-            // document.getElementById(this.posToId(down)).classList.add('hollow');
             return down;
         } else if (visited.has(this.posToId(down))) {
-            // document.getElementById(this.posToId(up)).classList.add('hollow');
             return up;
         } else if (visited.has(this.posToId(left))) {
-            // document.getElementById(this.posToId(right)).classList.add('hollow');
             return right;
         } else if (visited.has(this.posToId(right))) {
-            // document.getElementById(this.posToId(left)).classList.add('hollow');
             return left;
         }
     }
