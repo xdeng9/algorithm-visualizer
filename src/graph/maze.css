@@ -24,12 +24,16 @@
     flex-wrap: wrap;
 }
 
-.wall {
-    background-color: black;
+.solid {
+    background: black;
     width: 15px;
     height: 15px;
 }
 
 .hollow {
     background-color: white;
+}
+
+.maze-path {
+    background-color: red;
 }

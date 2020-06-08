@@ -1,5 +1,7 @@
 import React from 'react';
 import './maze.css';
+import { Node, calcGCost, calcHCost, found } from './aStar_util';
+import { PriorityQueue } from './util';
 
 class Maze extends React.Component {
 
@@ -138,12 +140,54 @@ class Maze extends React.Component {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
                 document.getElementById(`${i}-${j}`).classList.remove('hollow');
+                document.getElementById(`${i}-${j}`).classList.remove('maze-path');
             }
         }
     }
 
-    solveMaze(start = [0, 0], end = [this.rows - 1, this.cols - 1]) {
-        
+    solveMaze(start = [0, 0], end = [this.rows - 1, this.cols - 1], row = this.rows, col = this.cols) {
+        let pq = new PriorityQueue();
+        let open = {};
+        let close = new Set();
+        let curPos = start;
+        let g = 0;
+        let h = calcHCost(start, end);
+        let path = [];
+        let startNode = new Node(start, g, h);
+        let startKey = `${start[0] - start[1]}`;
+        pq.add(startNode);
+        open[startKey] = startNode;
+    
+        while (pq.size !== 0) {
+            let curNode = pq.remove();
+            curPos = curNode.getPos();
+            let key = `${curPos[0]}-${curPos[1]}`;
+            close.add(key);
+
+            if (found(curPos, end)) {
+                let prev = curNode;
+                while (prev.parent !== null) {
+                    path.unshift(prev.getPos());
+                    prev = prev.parent;
+                }
+                path.unshift(start);
+                return path;
+            }
+
+            let neighbors = this.getAdjNodes(curPos, row, col);
+            for (let neighbor of neighbors) {
+                let k = `${neighbor[0]}-${neighbor[1]}`;
+                if (close.has(k)) continue;
+
+                g = calcGCost(start, neighbor);
+                h = calcHCost(neighbor, end);
+                let node = new Node(neighbor, g, h);
+                if (open[k] === undefined) pq.add(node);
+                open[k] = node;
+                node.setParent(curNode);
+                open[key] = node;
+            }
+        }
     }
 
     handleMaze(e) {
@@ -160,7 +204,10 @@ class Maze extends React.Component {
         e.preventDefault();
         let start = document.getElementById(this.posToId([0, 0]));
         if (!start || !start.classList.contains('hollow')) return;
-        this.solveMaze();
+        let path = this.solveMaze();
+        for (let cell of path) {
+            document.getElementById(this.posToId(cell)).classList.add('maze-path');
+        }
     }
 
     createGrid() {
@@ -172,13 +219,38 @@ class Maze extends React.Component {
                     <div
                         id={`${i}-${j}`}
                         key={`${i}-${j}`}
-                        className="wall"
+                        className="solid"
                     >
                     </div>
                 );
             }
         }
         return grid;
+    }
+
+    getAdjNodes(pos, H, W) {
+        const dirs = [
+            [-1, 0],
+            [0, 1],
+            [1, 0],
+            [0, -1],
+        ]
+
+        let [x, y] = pos;
+        let nodes = [];
+
+        for (let dir of dirs) {
+            let [dx, dy] = dir;
+            let newX = dx + x;
+            let newY = dy + y;
+
+            if (newX >= 0 && newX < H && newY >= 0 && newY < W) {
+                if (document.getElementById(`${newX}-${newY}`).classList.contains('hollow')) {
+                    nodes.push([newX, newY]);
+                }    
+            }
+        }
+        return nodes;
     }
 
     render() {
