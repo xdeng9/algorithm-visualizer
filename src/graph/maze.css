@@ -17,19 +17,40 @@
 }
 
 .maze-grid {
-    min-width: 900px;
-    max-width: 900px;
+    min-width: 1200px;
+    max-width: 1200px;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .solid {
-    background-color: rgb(55, 55, 55);
-    width: 15px;
-    height: 15px;
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    border: 5px solid black;
+}
+
+.right-pass {
+    border-right: 5px solid white;
+}
+
+.left-pass {
+    border-left: 5px solid white;
+}
+
+.top-pass {
+    border-top: 5px solid white;
+}
+
+.bottom-pass {
+    border-bottom: 5px solid white;
 }
 
 .hollow {
     background-color: white;
+    width: 10px;
+    height: 10px;
 }
+
+
