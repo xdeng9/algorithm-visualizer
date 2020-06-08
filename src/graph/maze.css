@@ -34,4 +34,6 @@
     background-color: white;
 }
 
-
+.disable {
+  pointer-events: none;
+}

@@ -7,6 +7,9 @@ class Maze extends React.Component {
         super(props);
         this.rows = 35;
         this.cols = 65;
+        this.state = {
+            controllDsiabled: false
+        }
 
         this.handleMaze = this.handleMaze.bind(this);
         this.handlePath = this.handlePath.bind(this);
@@ -90,6 +93,7 @@ class Maze extends React.Component {
                 }
             }
         }
+        return offset * 20;
     }
 
     canBePlaced(pos, visited) {
@@ -130,9 +134,22 @@ class Maze extends React.Component {
         }
     }
 
+    resetMaze() {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < this.cols; j++) {
+                document.getElementById(`${i}-${j}`).classList.remove('hollow');
+            }
+        }
+    }
+
     handleMaze(e) {
         e.preventDefault();
-        this.primesAlgo();
+        this.resetMaze();
+        let duration = this.primesAlgo();
+        this.setState({ controllDsiabled: true })
+        setTimeout(() => {
+            this.setState({ controllDsiabled: false })
+        }, duration);
     }
 
     handlePath(e) {
@@ -161,8 +178,17 @@ class Maze extends React.Component {
         return (
             <div className="maze-container">
                 <div className="maze-controll">
-                    <button onClick={this.handleMaze}>Create Maze</button>
-                    <button onClick={this.handlePath} className="show-path-btn">Show Path</button>
+                    <button
+                        disabled={this.state.controllDsiabled}
+                        onClick={this.handleMaze}>
+                        Create Maze
+                    </button>
+                    <button 
+                        disabled={this.state.controllDsiabled}
+                        onClick={this.handlePath} 
+                        className="show-path-btn">
+                            Show Path
+                        </button>
                 </div>
                 <div className="maze-grid">
                     {this.createGrid()}
