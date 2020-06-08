@@ -5,8 +5,8 @@ class Maze extends React.Component {
 
     constructor(props) {
         super(props);
-        this.rows = 30;
-        this.cols = 60;
+        this.rows = 35;
+        this.cols = 65;
 
         this.handleMaze = this.handleMaze.bind(this);
         this.handlePath = this.handlePath.bind(this);
@@ -56,9 +56,10 @@ class Maze extends React.Component {
         let start = [0, 0];
         let visited = new Set();
         let walls = new Set();
+        this.markPos([0, 0]);
         let frontier = [[0, 1], [1, 0]];
         visited.add(this.posToId(start));
-        document.getElementById(this.posToId(start)).classList.add('hollow');
+        // document.getElementById(this.posToId(start)).classList.add('hollow');
         for (let node of frontier) {
             walls.add(this.posToId(node));
         }
@@ -67,16 +68,21 @@ class Maze extends React.Component {
         while (frontier.length !== 0) {
             let randIndex = Math.floor(Math.random() * frontier.length);
             let curPos = frontier[randIndex];
-            let posId = this.posToId(curPos);
             frontier.splice(randIndex, 1);
-            visited.add(posId);
 
-            // setTimeout(() => {
-            this.markPos(curPos, visited);
-            // }, 20 * offset)
+            if (!this.canBePlaced(curPos, visited)) continue;
+
+            let newPos = this.getNewPos(curPos, visited);
+            visited.add(this.posToId(curPos));
+            visited.add(this.posToId(newPos));
+
+            setTimeout(() => {
+                this.markPos(curPos);
+                this.markPos(newPos);
+            }, 20 * offset)
             offset++;
             debugger
-            let neighbors = this.getNeighbors(curPos, visited);
+            let neighbors = this.getNeighbors(newPos, visited);
             for (let neighbor of neighbors) {
                 if (!walls.has(this.posToId(neighbor))) {
                     walls.add(this.posToId(neighbor));
@@ -86,8 +92,29 @@ class Maze extends React.Component {
         }
     }
 
-    markPos(pos, visited) {
+    canBePlaced(pos, visited) {
+        let up = [pos[0] - 1, pos[1]];
+        let down = [pos[0] + 1, pos[1]];
+        let left = [pos[0], pos[1] - 1];
+        let right = [pos[0], pos[1] + 1];
+
+        let count = 0;
+        if (visited.has(this.posToId(up))) count++;
+        if (visited.has(this.posToId(down))) count++;
+        if (visited.has(this.posToId(left))) count++;
+        if (visited.has(this.posToId(right))) count++;
+
+        return count < 2;
+    }
+
+    markPos(pos) {
         let posId = this.posToId(pos)
+        document.getElementById(posId).classList.add('hollow');
+    }
+
+    getNewPos(pos, visited) {
+        // let posId = this.posToId(pos)
+        // document.getElementById(posId).classList.add('hollow');
 
         let up = [pos[0] - 1, pos[1]];
         let down = [pos[0] + 1, pos[1]];
@@ -95,25 +122,17 @@ class Maze extends React.Component {
         let right = [pos[0], pos[1] + 1];
 
         if (visited.has(this.posToId(up))) {
-            document.getElementById(posId).classList.remove('solid');
-            document.getElementById(posId).classList.add('hollow');
-            document.getElementById(posId).classList.add('top-pass');
-            document.getElementById(this.posToId(up)).classList.add('bottom-pass');
+            // document.getElementById(this.posToId(down)).classList.add('hollow');
+            return down;
         } else if (visited.has(this.posToId(down))) {
-            document.getElementById(posId).classList.remove('solid');
-            document.getElementById(posId).classList.add('hollow');
-            document.getElementById(posId).classList.add('bottom-pass');
-            document.getElementById(this.posToId(down)).classList.add('top-pass');
+            // document.getElementById(this.posToId(up)).classList.add('hollow');
+            return up;
         } else if (visited.has(this.posToId(left))) {
-            document.getElementById(posId).classList.remove('solid');
-            document.getElementById(posId).classList.add('hollow');
-            document.getElementById(posId).classList.add('left-pass');
-            document.getElementById(this.posToId(left)).classList.add('right-pass');
+            // document.getElementById(this.posToId(right)).classList.add('hollow');
+            return right;
         } else if (visited.has(this.posToId(right))) {
-            document.getElementById(posId).classList.remove('solid');
-            document.getElementById(posId).classList.add('hollow');
-            document.getElementById(posId).classList.add('right-pass');
-            document.getElementById(this.posToId(right)).classList.add('left-pass');
+            // document.getElementById(this.posToId(left)).classList.add('hollow');
+            return left;
         }
     }
 

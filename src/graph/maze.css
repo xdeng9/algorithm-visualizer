@@ -3,7 +3,7 @@
     flex-direction: column;
     padding-top: 12px;;
     align-items: center;
-    background-color: darkgray;
+    background-color: black;
     height: 100vh;
 }
 
@@ -17,8 +17,8 @@
 }
 
 .maze-grid {
-    min-width: 1200px;
-    max-width: 1200px;
+    min-width: 975px;
+    max-width: 975px;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -26,31 +26,12 @@
 
 .solid {
     background-color: black;
-    width: 10px;
-    height: 10px;
-    border: 5px solid black;
-}
-
-.right-pass {
-    border-right: 5px solid white;
-}
-
-.left-pass {
-    border-left: 5px solid white;
-}
-
-.top-pass {
-    border-top: 5px solid white;
-}
-
-.bottom-pass {
-    border-bottom: 5px solid white;
+    width: 15px;
+    height: 15px;
 }
 
 .hollow {
     background-color: white;
-    width: 10px;
-    height: 10px;
 }
 
 
