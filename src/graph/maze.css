@@ -24,7 +24,7 @@
     flex-wrap: wrap;
 }
 
-.solid {
+.wall {
     background-color: black;
     width: 15px;
     height: 15px;
@@ -32,8 +32,4 @@
 
 .hollow {
     background-color: white;
-}
-
-.disable {
-  pointer-events: none;
 }

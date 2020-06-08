@@ -142,6 +142,10 @@ class Maze extends React.Component {
         }
     }
 
+    solveMaze(start = [0, 0], end = [this.rows - 1, this.cols - 1]) {
+        
+    }
+
     handleMaze(e) {
         e.preventDefault();
         this.resetMaze();
@@ -154,6 +158,9 @@ class Maze extends React.Component {
 
     handlePath(e) {
         e.preventDefault();
+        let start = document.getElementById(this.posToId([0, 0]));
+        if (!start || !start.classList.contains('hollow')) return;
+        this.solveMaze();
     }
 
     createGrid() {
@@ -165,7 +172,7 @@ class Maze extends React.Component {
                     <div
                         id={`${i}-${j}`}
                         key={`${i}-${j}`}
-                        className="solid"
+                        className="wall"
                     >
                     </div>
                 );
