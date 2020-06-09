@@ -8,11 +8,12 @@ Algorithm Visualizer is a tool for visualizing different algorithms (see demos b
 - A* Algorithm - a more optimal path finding algorithm. Faster than Dijkstra's.
 - Maze - used Prim's algorithm to randomly generate a maze. Used A* algorithm for solving it.
 
-## Upcoming algorithms:
+## Upcoming:
 - N Queen's - a puzzle for placing N queens on a N x N board. Can be solved using backtracking.
 - Merge Sort - a sorting algorithm that uses the divide and conquer approach.
 - Quick Sort - another divide and conquer sorting algorithm.
 
+<img src="https://github.com/xdeng9/algorithm-visualizer/blob/master/screen/maze.gif" />
 <img src="https://github.com/xdeng9/algorithm-visualizer/blob/master/screen/demo0.gif" />
 <img src="https://github.com/xdeng9/algorithm-visualizer/blob/master/screen/demo2.gif" />
 
