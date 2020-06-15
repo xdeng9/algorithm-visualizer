@@ -26,6 +26,11 @@ const Header = () => {
               Maze
             </Link>
           </li>
+          <li>
+            <Link to="/nqueen" className="hover" id="nqueen">
+              N Queens
+            </Link>
+          </li>
         </ul>
       </div>
     );
