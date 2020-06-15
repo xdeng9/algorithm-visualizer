@@ -10,6 +10,7 @@ class AStar extends React.Component {
     document.getElementById("astar").classList.add("active");
     document.getElementById("dijkstra").classList.remove("active");
     document.getElementById("maze").classList.remove("active");
+    document.getElementById('queen').classList.remove('active');
   }
 
   aStarSearch(start, end, row, col) {

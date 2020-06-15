@@ -9,6 +9,7 @@ class Dijkstra extends React.Component {
         document.getElementById('dijkstra').classList.add('active');
         document.getElementById("astar").classList.remove("active");
         document.getElementById("maze").classList.remove("active");
+      document.getElementById('queen').classList.remove('active');
     }
 
   dijkstraSearch(start, end, rows, cols) {

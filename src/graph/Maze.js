@@ -21,6 +21,7 @@ class Maze extends React.Component {
         document.getElementById('maze').classList.add('active');
         document.getElementById('dijkstra').classList.remove('active');
         document.getElementById("astar").classList.remove("active");
+        document.getElementById('queen').classList.remove('active');
     }
 
     posToId(pos) {
