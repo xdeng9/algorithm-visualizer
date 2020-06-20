@@ -37,3 +37,7 @@
 .maze-path {
     background-color: red;
 }
+
+.disable {
+  pointer-events: none;
+}

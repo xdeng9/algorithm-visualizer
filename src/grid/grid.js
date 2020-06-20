@@ -186,11 +186,13 @@ class Grid extends React.Component {
   }
 
   disableEvents() {
-    document.querySelector('.grid-content').classList.add('disable')
+    document.querySelector('.grid-content').classList.add('disable');
+    document.querySelector('.menu-list').classList.add('disable');
   }
 
   enableEvents() {
-    document.querySelector('.grid-content').classList.remove('disable')
+    document.querySelector('.grid-content').classList.remove('disable');
+    document.querySelector('.menu-list').classList.remove('disable');
   }
 
   animate() {

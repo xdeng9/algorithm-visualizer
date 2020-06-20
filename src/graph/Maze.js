@@ -195,9 +195,11 @@ class Maze extends React.Component {
         e.preventDefault();
         this.resetMaze();
         let duration = this.primesAlgo();
+        document.querySelector('.menu-list').classList.add('disable');
         this.setState({ controllDsiabled: true })
         setTimeout(() => {
-            this.setState({ controllDsiabled: false })
+            this.setState({ controllDsiabled: false });
+            document.querySelector('.menu-list').classList.remove('disable');
         }, duration);
     }
 
