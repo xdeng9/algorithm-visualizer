@@ -25,7 +25,7 @@ class Home extends React.Component {
                             to see it in action. 
                         </p>
                         <p>
-                            Currently supports:
+                            Algorithms:
                             <li>
                                 Dijkstra's - an algorithm for finding the shortest path. 
                             </li>
@@ -34,6 +34,9 @@ class Home extends React.Component {
                             </li>
                             <li>
                                 Maze - used Prim's algorithm to randomly generate a maze. 
+                            </li>
+                            <li>
+                                N Queens - a puzzle for placing N queens (using backtracking) on a NxN board. 
                             </li>
                         </p>
                     </div>
