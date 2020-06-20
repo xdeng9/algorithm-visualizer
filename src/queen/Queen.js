@@ -1,4 +1,5 @@
 import React from 'react';
+import './queen.css';
 
 class Queen extends React.Component {
 
@@ -35,7 +36,13 @@ class Queen extends React.Component {
     render() {
         return (
             <div className="board-container">
-                
+                <div className="nqueens-controll">
+                    <label>
+                        N=
+                    <input className="input-field"></input>
+                    </label>
+                    <button>Start</button>
+                </div>
             </div>
         )
     }
