@@ -24,16 +24,21 @@ class Queen extends React.Component {
     createChessBoard() {
         let board = [];
         let { row, col } = this.state;
-        const size = Math.floor(this.dimension / row) + 'px';
+        const size = Math.floor(this.dimension / row - 1) + 'px';
+        let lsg = false;
+        let cellStyle = '';
         for (let i = 0; i < row; i++) {
             let rowArray = [];
+            if (this.state.row % 2 === 0) lsg = !lsg
             for (let j = 0; j < col; j++) {
+                if (lsg) cellStyle = 'cell-i';
+                else cellStyle = 'cell-j';
+                lsg = !lsg;
                 rowArray.push(
-                    <div 
+                    <div
                         key={i * row + j}
-                        className="chess-cell" 
-                        style={{width:size, height:size}}>
-
+                        className={`chess-cell ${cellStyle}`}
+                        style={{ width: size, height: size }}>
                     </div>
                 )
             }
@@ -47,6 +52,7 @@ class Queen extends React.Component {
     }
 
     handleUpdate(e) {
+       
         this.setState({
             row: e.currentTarget.value,
             col: e.currentTarget.value

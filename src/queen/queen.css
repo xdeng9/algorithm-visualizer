@@ -29,7 +29,17 @@
 }
 
 .chess-cell {
-    background: cornflowerblue;
+    border: 1px gray solid;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.cell-i {
+    background-color: rgb(110, 144, 177);
+}
+
+.cell-j {
+    background-color: rgb(225, 224, 224);
 }
 
 .disable {
