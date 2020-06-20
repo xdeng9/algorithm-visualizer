@@ -5,6 +5,7 @@ class Queen extends React.Component {
 
     constructor(props) {
         super(props);
+        this.dimension = 600;
         this.state = {
             row: 8,
             col: 8
@@ -23,12 +24,15 @@ class Queen extends React.Component {
     createChessBoard() {
         let board = [];
         let { row, col } = this.state;
+        const size = Math.floor(this.dimension / row) + 'px';
         for (let i = 0; i < row; i++) {
             let rowArray = [];
             for (let j = 0; j < col; j++) {
-                let cellNum = i * row + j;
                 rowArray.push(
-                    <div>
+                    <div 
+                        key={i * row + j}
+                        className="chess-cell" 
+                        style={{width:size, height:size}}>
 
                     </div>
                 )
@@ -50,7 +54,6 @@ class Queen extends React.Component {
     }
     
     render() {
-        console.log(this.state.row, this.state.col)
         return (
             <div className="board-container">
                 <div className="nqueens-controll">
@@ -59,6 +62,9 @@ class Queen extends React.Component {
                     <input className="input-field" onChange={this.handleUpdate} value={this.state.col}></input>
                     </label>
                     <button className="nqueens-btn" onClick={this.handleClick}>Start</button>
+                </div>
+                <div className="chess-board">
+                    {this.createChessBoard()}
                 </div>
             </div>
         )

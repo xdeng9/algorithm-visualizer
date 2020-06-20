@@ -1,5 +1,6 @@
 .board-container {
     display: flex;
+    flex-direction: column;
 }
 
 .nqueens-controll {
@@ -17,6 +18,18 @@
 
 .nqueens-btn {
     margin-left: 18px;
+}
+
+.chess-board {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.chess-cell {
+    background: cornflowerblue;
 }
 
 .disable {
