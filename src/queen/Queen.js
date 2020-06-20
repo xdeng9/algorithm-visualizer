@@ -5,8 +5,11 @@ class Queen extends React.Component {
 
     constructor(props) {
         super(props);
-        this.row = 8;
-        this.col = 8;
+        this.state = {
+            row: 8,
+            col: 8
+        }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -18,19 +21,24 @@ class Queen extends React.Component {
 
     createChessBoard() {
         let board = [];
-        for (let i = 0; i < this.row; i++) {
-            let row = [];
-            for (let j = 0; j < this.col; j++) {
-                let cellNum = i * this.row + j;
-                row.push(
+        let { row, col } = this.state;
+        for (let i = 0; i < row; i++) {
+            let rowArray = [];
+            for (let j = 0; j < col; j++) {
+                let cellNum = i * row + j;
+                rowArray.push(
                     <div>
 
                     </div>
                 )
             }
-            board.push(row);
+            board.push(rowArray);
         }
         return board;
+    }
+
+    handleClick(e) {
+        e.preventDefault();
     }
     
     render() {
@@ -39,9 +47,9 @@ class Queen extends React.Component {
                 <div className="nqueens-controll">
                     <label>
                         N=
-                    <input className="input-field"></input>
+                    <input className="input-field" value={this.state.col}></input>
                     </label>
-                    <button>Start</button>
+                    <button className="nqueens-btn" onClick={this.handleClick}>Start</button>
                 </div>
             </div>
         )

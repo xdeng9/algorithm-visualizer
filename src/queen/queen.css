@@ -9,3 +9,16 @@
     align-items: center;
     padding-top: 12px;
 }
+
+.input-field {
+    width: 20px;
+    text-align: center;
+}
+
+.nqueens-btn {
+    margin-left: 18px;
+}
+
+.disable {
+  pointer-events: none;
+}
