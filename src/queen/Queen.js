@@ -10,6 +10,7 @@ class Queen extends React.Component {
             col: 8
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -40,14 +41,22 @@ class Queen extends React.Component {
     handleClick(e) {
         e.preventDefault();
     }
+
+    handleUpdate(e) {
+        this.setState({
+            row: e.currentTarget.value,
+            col: e.currentTarget.value
+        })
+    }
     
     render() {
+        console.log(this.state.row, this.state.col)
         return (
             <div className="board-container">
                 <div className="nqueens-controll">
                     <label>
                         N=
-                    <input className="input-field" value={this.state.col}></input>
+                    <input className="input-field" onChange={this.handleUpdate} value={this.state.col}></input>
                     </label>
                     <button className="nqueens-btn" onClick={this.handleClick}>Start</button>
                 </div>
