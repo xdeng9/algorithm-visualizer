@@ -42,6 +42,11 @@
     background-color: rgb(225, 224, 224);
 }
 
+.queen {
+    background-image: url('./queen.svg');
+    background-repeat: no-repeat;
+}
+
 .disable {
   pointer-events: none;
 }

@@ -34,9 +34,11 @@ class Queen extends React.Component {
                 if (lsg) cellStyle = 'cell-i';
                 else cellStyle = 'cell-j';
                 lsg = !lsg;
+                let id = i * row + j;
                 rowArray.push(
                     <div
-                        key={i * row + j}
+                        key={id}
+                        id={id}
                         className={`chess-cell ${cellStyle}`}
                         style={{ width: size, height: size }}>
                     </div>
@@ -49,6 +51,8 @@ class Queen extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        // document.querySelector('.menu-list').classList.add('disable');
+
     }
 
     handleUpdate(e) {
