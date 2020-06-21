@@ -52,10 +52,10 @@ class Queen extends React.Component {
     }
 
     handleUpdate(e) {
-       
+       let val = e.currentTarget.value;
         this.setState({
-            row: e.currentTarget.value,
-            col: e.currentTarget.value
+            row: val,
+            col: val
         })
     }
     
@@ -65,7 +65,14 @@ class Queen extends React.Component {
                 <div className="nqueens-controll">
                     <label>
                         N=
-                    <input className="input-field" onChange={this.handleUpdate} value={this.state.col}></input>
+                    <input 
+                        className="input-field" 
+                        onChange={this.handleUpdate} 
+                        value={this.state.col}
+                        type="number"
+                        min="4"
+                        max="23">
+                    </input>
                     </label>
                     <button className="nqueens-btn" onClick={this.handleClick}>Start</button>
                 </div>
