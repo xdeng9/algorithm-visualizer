@@ -16,6 +16,14 @@
     margin-left: 32px;
 }
 
+.show-path-btn {
+    cursor: pointer;
+}
+
+.create-maze-btn:hover {
+    cursor: pointer;
+}
+
 .maze-grid {
     min-width: 975px;
     max-width: 975px;

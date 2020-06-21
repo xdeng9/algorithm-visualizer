@@ -38,7 +38,7 @@ class Queen extends React.Component {
                 rowArray.push(
                     <div
                         key={id}
-                        id={id}
+                        id={id.toString()}
                         className={`chess-cell ${cellStyle}`}
                         style={{ width: size, height: size }}>
                     </div>
@@ -52,7 +52,7 @@ class Queen extends React.Component {
     handleClick(e) {
         e.preventDefault();
         // document.querySelector('.menu-list').classList.add('disable');
-
+        document.getElementById('0').classList.add('queen');
     }
 
     handleUpdate(e) {

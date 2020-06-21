@@ -261,6 +261,7 @@ class Maze extends React.Component {
             <div className="maze-container">
                 <div className="maze-controll">
                     <button
+                        className="create-maze-btn"
                         disabled={this.state.controllDsiabled}
                         onClick={this.handleMaze}>
                         Create Maze

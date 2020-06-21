@@ -20,6 +20,10 @@
     margin-left: 18px;
 }
 
+.nqueens-btn:hover {
+    cursor: pointer;
+}
+
 .chess-board {
     width: 600px;
     height: 600px;
