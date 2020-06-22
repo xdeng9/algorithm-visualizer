@@ -53,7 +53,7 @@ class Queen extends React.Component {
         return (row * this.state.row + col).toString();
     }
 
-    solveNQueens(res, row) {
+    solveNQueens(res, row, moves = []) {
         let len = res.length;
         if (row === len) {
             console.log(res)
@@ -92,8 +92,6 @@ class Queen extends React.Component {
         e.preventDefault();
         // document.querySelector('.menu-list').classList.add('disable');
         this.reset()
-        debugger
-        console.log(this.state.row);
         let res = new Array(this.state.row);
         res.fill(-1);
         this.solveNQueens(res, 0);
