@@ -49,18 +49,71 @@ class Queen extends React.Component {
         return board;
     }
 
+    getCellId(row, col) {
+        return (row * this.state.row + col).toString();
+    }
+
+    solveNQueens(res, row) {
+        let len = res.length;
+        if (row === len) {
+            console.log(res)
+            return true;
+        }
+
+        let availablePos = [];
+        for (let i = 0; i < this.state.row; i++) {
+            availablePos[i] = true;
+        }
+        
+        let offset = 0;
+        let idx = 0;
+        for (let n of res) {
+            if (n === -1) break;
+            availablePos[n] = false;
+            offset = row - idx;
+            if (n + offset < len) availablePos[n + offset] = false;
+            if (n - offset >= 0) availablePos[n - offset] = false;
+            idx++;
+        }
+    
+        if (availablePos.every(ele => ele === false)) return;
+        for (let i = 0; i < availablePos.length; i++) {
+            if (!availablePos[i]) continue;
+            let cellNum = row * this.state.row + i;
+            res[row] = i;
+            document.getElementById(this.getCellId(row, i)).classList.add('queen');
+            if (this.solveNQueens(res, row + 1)) return true;
+            res[row] = -1;
+            document.getElementById(this.getCellId(row, i)).classList.remove('queen');
+        }
+    }
+
     handleClick(e) {
         e.preventDefault();
         // document.querySelector('.menu-list').classList.add('disable');
-        document.getElementById('0').classList.add('queen');
+        this.reset()
+        debugger
+        console.log(this.state.row);
+        let res = new Array(this.state.row);
+        res.fill(-1);
+        this.solveNQueens(res, 0);
     }
 
     handleUpdate(e) {
-       let val = e.currentTarget.value;
+       this.reset();
+       let val = parseInt(e.currentTarget.value);
         this.setState({
             row: val,
             col: val
         })
+    }
+
+    reset() {
+        for (let i = 0; i < this.state.row; i++) {
+            for (let j = 0; j < this.state.col; j++) {
+                document.getElementById(this.getCellId(i, j)).classList.remove('queen');
+            }
+        }
     }
     
     render() {
