@@ -8,7 +8,8 @@ class Queen extends React.Component {
         this.dimension = 600;
         this.state = {
             row: 8,
-            col: 8
+            col: 8,
+            controllDisabled: false
         }
         this.handleClick = this.handleClick.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -53,7 +54,7 @@ class Queen extends React.Component {
         return (row * this.state.row + col).toString();
     }
 
-    solveNQueens(res, row, moves = []) {
+    solveNQueens(res, row, moves) {
         let len = res.length;
         if (row === len) {
             console.log(res)
@@ -81,20 +82,44 @@ class Queen extends React.Component {
             if (!availablePos[i]) continue;
             let cellNum = row * this.state.row + i;
             res[row] = i;
-            document.getElementById(this.getCellId(row, i)).classList.add('queen');
-            if (this.solveNQueens(res, row + 1)) return true;
+            moves.push([cellNum, 'place'])
+            if (this.solveNQueens(res, row + 1, moves)) return true;
             res[row] = -1;
-            document.getElementById(this.getCellId(row, i)).classList.remove('queen');
+            moves.push([cellNum, 'remove'])
+        }
+    }
+
+    animateNQueens(moves) {
+        let time = 1;
+        for (let move of moves) {
+            let cellId = move[0].toString();
+            let action = move[1];
+            setTimeout(() => {
+                if (action === 'place') {
+                    document.getElementById(cellId).classList.add('queen');
+                } else {
+                    document.getElementById(cellId).classList.remove('queen');
+                }
+            }, time * 100);
+            time++;
         }
     }
 
     handleClick(e) {
         e.preventDefault();
-        // document.querySelector('.menu-list').classList.add('disable');
+        document.querySelector('.menu-list').classList.add('disable');
+        this.setState({ controllDisabled: true })
         this.reset()
         let res = new Array(this.state.row);
+        let moves = [];
         res.fill(-1);
-        this.solveNQueens(res, 0);
+        this.solveNQueens(res, 0, moves);
+        this.animateNQueens(moves);
+        let timeout = 100 * moves.length + 500;
+        setTimeout(() => {
+            document.querySelector('.menu-list').classList.remove('disable');
+            this.setState({ controllDisabled: false });
+        }, timeout);
     }
 
     handleUpdate(e) {
@@ -123,13 +148,17 @@ class Queen extends React.Component {
                     <input 
                         className="input-field" 
                         onChange={this.handleUpdate} 
+                        disabled={this.state.controllDisabled}
                         value={this.state.col}
                         type="number"
                         min="4"
                         max="23">
                     </input>
                     </label>
-                    <button className="nqueens-btn" onClick={this.handleClick}>Start</button>
+                    <button 
+                        disabled={this.state.controllDisabled}
+                        className="nqueens-btn" 
+                        onClick={this.handleClick}>Start</button>
                 </div>
                 <div className="chess-board">
                     {this.createChessBoard()}
