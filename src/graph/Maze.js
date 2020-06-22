@@ -10,7 +10,7 @@ class Maze extends React.Component {
         this.rows = 35;
         this.cols = 65;
         this.state = {
-            controllDsiabled: false
+            controllDisabled: false
         }
 
         this.handleMaze = this.handleMaze.bind(this);
@@ -194,11 +194,11 @@ class Maze extends React.Component {
     handleMaze(e) {
         e.preventDefault();
         this.resetMaze();
-        let duration = this.primesAlgo();
+        let duration = this.primesAlgo() + 500;
         document.querySelector('.menu-list').classList.add('disable');
-        this.setState({ controllDsiabled: true })
+        this.setState({ controllDisabled: true })
         setTimeout(() => {
-            this.setState({ controllDsiabled: false });
+            this.setState({ controllDisabled: false });
             document.querySelector('.menu-list').classList.remove('disable');
         }, duration);
     }
@@ -262,12 +262,12 @@ class Maze extends React.Component {
                 <div className="maze-controll">
                     <button
                         className="create-maze-btn"
-                        disabled={this.state.controllDsiabled}
+                        disabled={this.state.controllDisabled}
                         onClick={this.handleMaze}>
                         Create Maze
                     </button>
                     <button 
-                        disabled={this.state.controllDsiabled}
+                        disabled={this.state.controllDisabled}
                         onClick={this.handlePath} 
                         className="show-path-btn">
                             Show Path
