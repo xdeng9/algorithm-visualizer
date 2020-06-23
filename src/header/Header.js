@@ -31,6 +31,16 @@ const Header = () => {
               N Queens
             </Link>
           </li>
+          <li>
+            <Link to="/quicksort" className="hover" id="quicksort">
+              Quick Sort
+            </Link>
+          </li>
+          <li>
+            <Link to="/mergesort" className="hover" id="mergesort">
+              Merge Sort
+            </Link>
+          </li>
         </ul>
       </div>
     );
