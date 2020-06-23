@@ -13,6 +13,11 @@ class Bars extends React.Component {
         }
 
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleSort = this.handleSort.bind(this);
+    }
+
+    handleSort(e) {
+        e.preventDefault();
     }
 
     componentDidMount() {
@@ -37,7 +42,7 @@ class Bars extends React.Component {
         return (
             <div className="bars-container">
                 <div className="bars-controll">
-                    <button className="sort-btn hover">
+                    <button className="sort-btn hover" onClick={this.handleSort}>
                         Sort
                     </button>
                     <label className="slider-container"> Size 
