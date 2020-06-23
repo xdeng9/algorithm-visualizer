@@ -1,0 +1,9 @@
+.bars-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bars-controll {
+    display: flex;
+}

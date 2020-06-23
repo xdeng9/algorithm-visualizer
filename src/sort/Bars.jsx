@@ -5,7 +5,7 @@ class Bars extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            arr = []
+            arr: []
         }
     }
 
@@ -13,7 +13,7 @@ class Bars extends React.Component {
         return (
             <div className="bars-container">
                 <div className="bars-controll">
-                    
+
                 </div>
             </div>
         )
