@@ -23,10 +23,10 @@ class Bars extends React.Component {
         return (
             <div className="bars-container">
                 <div className="bars-controll">
-                    <button>
+                    <button className="sort-btn hover">
                         Start
                     </button>
-                    
+
                     <label className="slider-container"> Size 
                         <input
                             type="range"

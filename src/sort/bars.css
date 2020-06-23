@@ -9,7 +9,6 @@
 .bars-controll {
     display: flex;
     align-items: center;
-    vertical-align: auto;
 }
 
 #slider:hover {
@@ -18,4 +17,12 @@
 
 .slider-container {
     display: flex;
+}
+
+.sort-btn {
+    margin-right: 50px;
+}
+
+.hover {
+    cursor: pointer;
 }
