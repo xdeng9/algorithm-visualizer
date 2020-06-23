@@ -160,7 +160,7 @@ class Queen extends React.Component {
                     <button 
                         disabled={this.state.controllDisabled}
                         className="nqueens-btn" 
-                        onClick={this.handleClick}>Start</button>
+                        onClick={this.handleClick}>Solve</button>
                 </div>
                 <div className="chess-board">
                     {this.createChessBoard()}

@@ -8,8 +8,8 @@ class Bars extends React.Component {
         this.state = {
             arr: [],
             min: 5,
-            max: 1000,
-            size: 500
+            max: 600,
+            size: 300
         }
 
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -19,7 +19,7 @@ class Bars extends React.Component {
         this.populateArray();
     }
 
-    populateArray(size = 500) {
+    populateArray(size = this.state.size) {
         let unsorted = [];
         let randNum = 23;
         for (let i = 0; i < size; i++) {
@@ -38,7 +38,7 @@ class Bars extends React.Component {
             <div className="bars-container">
                 <div className="bars-controll">
                     <button className="sort-btn hover">
-                        Start
+                        Sort
                     </button>
                     <label className="slider-container"> Size 
                         <input
@@ -54,7 +54,7 @@ class Bars extends React.Component {
                 <div className="bar-graph">
                     {this.state.arr.map((val, idx) => {
                         return (
-                            <div className={idx} key={idx}>
+                            <div className="i-bar" id={idx} key={idx}>
                                 {val}
                             </div>
                         )

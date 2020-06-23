@@ -26,3 +26,7 @@
 .hover {
     cursor: pointer;
 }
+
+.bar-graph {
+    display: flex;
+}
