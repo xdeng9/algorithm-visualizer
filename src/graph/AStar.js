@@ -11,6 +11,8 @@ class AStar extends React.Component {
     document.getElementById("dijkstra").classList.remove("active");
     document.getElementById("maze").classList.remove("active");
     document.getElementById('queen').classList.remove('active');
+    document.getElementById('quicksort').classList.remove('active');
+    document.getElementById('mergesort').classList.remove('active');
   }
 
   aStarSearch(start, end, row, col) {
