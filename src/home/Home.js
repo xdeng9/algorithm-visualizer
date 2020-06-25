@@ -38,6 +38,12 @@ class Home extends React.Component {
                             <li>
                                 N Queens - a puzzle for placing N queens (using backtracking) on a NxN board. 
                             </li>
+                            <li>
+                                Merge Sort - a sorting algorithm that uses the divide and conquer approach.
+                            </li>
+                            <li>
+                                Quick Sort - another divide and conquer sorting algorithm.
+                            </li>
                         </p>
                     </div>
                 </div>

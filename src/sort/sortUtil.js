@@ -14,6 +14,10 @@ export function partition(arr, i, j, steps) {
     return i;
 }
 
+export function merge(left, right, steps) {
+
+}
+
 function swap(arr, i, j, steps, color) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
     steps.push([i, j, color]);
