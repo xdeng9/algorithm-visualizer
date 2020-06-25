@@ -14,6 +14,12 @@ class Bars extends React.Component {
 
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleSort = this.handleSort.bind(this);
+        this.getNewArray = this.getNewArray.bind(this);
+    }
+
+    getNewArray(e) {
+        e.preventDefault();
+        if (this.state.arr.length !== 0) this.populateArray();   
     }
 
     handleSort(e) {
@@ -27,6 +33,7 @@ class Bars extends React.Component {
     }
 
     populateArray(size = this.state.size) {
+        console.log('called..')
         let unsorted = [];
         let randNum = 23;
         for (let i = 0; i < size; i++) {
@@ -45,6 +52,9 @@ class Bars extends React.Component {
         return (
             <div className="bars-container">
                 <div className="bars-controll">
+                    <button className="new-array-btn hover" onClick={this.getNewArray}>
+                        New Array
+                    </button>
                     <button className="sort-btn hover" onClick={this.handleSort}>
                         Sort
                     </button>
