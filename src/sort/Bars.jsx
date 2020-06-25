@@ -22,30 +22,57 @@ class Bars extends React.Component {
         if (this.state.arr.length !== 0) this.populateArray();   
     }
 
+    resetAnimation() {
+        for (let idx = 0; idx < this.state.arr.length; idx++) {
+            document.getElementById(idx).classList.remove('sorted');
+            document.getElementById(idx).classList.remove('swapped');
+            document.getElementById(idx).classList.add('unsorted');
+        }
+    }
+
     animateSort(steps) {
-        
-        for (let i = 0; i < steps.length; i++) {
-            
+        this.resetAnimation();
+        for (let i = 0; i < steps.length; i++) {    
             setTimeout(() => {
                 let step = steps[i];
                 let el1 = document.getElementById(step[0]);
                 let el2 = document.getElementById(step[1]);
-                el1.classList.add('swapped');
-                el2.classList.add('swapped');
-                let h1 = el1.clientHeight;
-                let h2 = el2.clientHeight;
-                let temp = h1;
-                el1.style.height = `${h2}px`;
-                el2.style.height = `${temp}px`;
 
-                if (step[2] === 'g') {
-                    el1.classList.add('sorted');
-                    el1.classList.remove('unsorted');
-                } 
-                el1.classList.remove('swapped');
-                el2.classList.remove('swapped');
+                setTimeout(() => {
+                    el1.classList.add('swapped');
+                    el2.classList.add('swapped');
+                    let h1 = el1.clientHeight;
+                    let h2 = el2.clientHeight;
+                    let temp = h1;
+                    el1.style.height = `${h2}px`;
+                    el2.style.height = `${temp}px`;
+                }, i * 25 + 30);
+
+                setTimeout(() => {
+                    if (step[2] === 'g') {
+                        el1.classList.add('sorted');
+                        el1.classList.remove('unsorted');
+                    } 
+                    el1.classList.remove('swapped');
+                    el2.classList.remove('swapped');
+                }, i * 25 + 70);
+
+                // el1.classList.add('swapped');
+                // el2.classList.add('swapped');
+                // let h1 = el1.clientHeight;
+                // let h2 = el2.clientHeight;
+                // let temp = h1;
+                // el1.style.height = `${h2}px`;
+                // el2.style.height = `${temp}px`;
+
+                // if (step[2] === 'g') {
+                //     el1.classList.add('sorted');
+                //     el1.classList.remove('unsorted');
+                // } 
+                // el1.classList.remove('swapped');
+                // el2.classList.remove('swapped');
                 
-            }, i * 25);
+            }, i * 25 + 100);
         }
     }
 
@@ -74,6 +101,7 @@ class Bars extends React.Component {
             randNum = Math.floor(Math.random() * (this.state.max + 100)) + 1;
             unsorted.push(randNum);
         }
+        this.resetAnimation();
         this.setState({ arr: unsorted, size });
     }
 
