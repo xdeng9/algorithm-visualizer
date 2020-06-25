@@ -110,6 +110,7 @@ class Queen extends React.Component {
     handleClick(e) {
         e.preventDefault();
         document.querySelector('.menu-list').classList.add('disable');
+        document.querySelector('.title').classList.add('disable');
         this.setState({ controllDisabled: true })
         this.reset()
         let res = new Array(this.state.row);
@@ -120,6 +121,7 @@ class Queen extends React.Component {
         let timeout = 100 * moves.length + 500;
         setTimeout(() => {
             document.querySelector('.menu-list').classList.remove('disable');
+            document.querySelector('.title').classList.remove('disable');
             this.setState({ controllDisabled: false });
         }, timeout);
     }
