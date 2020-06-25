@@ -9,7 +9,8 @@ class Bars extends React.Component {
             arr: [],
             min: 10,
             max: 500,
-            size: 250
+            size: 250,
+            controllDisabled: false
         }
 
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -56,22 +57,6 @@ class Bars extends React.Component {
                     el1.classList.remove('swapped');
                     el2.classList.remove('swapped');
                 }, i * 25 + 70);
-
-                // el1.classList.add('swapped');
-                // el2.classList.add('swapped');
-                // let h1 = el1.clientHeight;
-                // let h2 = el2.clientHeight;
-                // let temp = h1;
-                // el1.style.height = `${h2}px`;
-                // el2.style.height = `${temp}px`;
-
-                // if (step[2] === 'g') {
-                //     el1.classList.add('sorted');
-                //     el1.classList.remove('unsorted');
-                // } 
-                // el1.classList.remove('swapped');
-                // el2.classList.remove('swapped');
-                
             }, i * 25 + 100);
         }
     }
@@ -80,6 +65,9 @@ class Bars extends React.Component {
         e.preventDefault();
         let steps = [];
         let sort = [...this.state.arr];
+        this.setState({ controllDisabled: true });
+        document.querySelector('.menu-list').classList.add('disable');
+        document.querySelector('.title').classList.add('disable');
 
         if (this.props.type === 'quicksort') {
             this.props.quickSort(sort, 0, sort.length - 1, steps);
@@ -87,7 +75,11 @@ class Bars extends React.Component {
         } else if (this.props.type === 'quicksort') {
             console.log('merge sort placeholder')
         }
-        
+        setTimeout(() => {
+            this.setState({ controllDisabled: false, arr: sort })
+            document.querySelector('.menu-list').classList.remove('disable');
+            document.querySelector('.title').classList.remove('disable');
+        }, 50 * steps.length + 600);
     }
 
     componentDidMount() {
@@ -114,14 +106,21 @@ class Bars extends React.Component {
         return (
             <div className="bars-container">
                 <div className="bars-controll">
-                    <button className="new-array-btn hover" onClick={this.getNewArray}>
+                    <button 
+                        disabled={this.state.controllDisabled}
+                        className="new-array-btn hover" 
+                        onClick={this.getNewArray}>
                         New Array
                     </button>
-                    <button className="sort-btn hover" onClick={this.handleSort}>
+                    <button 
+                        disabled={this.state.controllDisabled}
+                        className="sort-btn hover" 
+                        onClick={this.handleSort}>
                         Sort
                     </button>
                     <label className="slider-container"> Size 
                         <input
+                            disabled={this.state.controllDisabled}
                             type="range"
                             id="slider"
                             onChange={this.handleUpdate}
