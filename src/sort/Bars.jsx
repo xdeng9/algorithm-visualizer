@@ -60,7 +60,7 @@ class Bars extends React.Component {
                     {this.state.arr.map((val, idx) => {
                         return (
                             <div className="i-bar" id={idx} key={idx}>
-                                {val}
+                                
                             </div>
                         )
                     })}

@@ -28,5 +28,13 @@
 }
 
 .bar-graph {
+    margin-top: 10px;
+    width: 1200px;
+    max-width: 1200px;
+    overflow: hidden;
     display: flex;
+}
+
+.i-bar {
+    background-color: indigo;
 }

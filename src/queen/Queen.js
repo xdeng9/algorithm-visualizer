@@ -59,7 +59,6 @@ class Queen extends React.Component {
     solveNQueens(res, row, moves) {
         let len = res.length;
         if (row === len) {
-            console.log(res)
             return true;
         }
 
