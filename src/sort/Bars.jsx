@@ -24,7 +24,8 @@ class Bars extends React.Component {
 
     handleSort(e) {
         e.preventDefault();
-        let sorted = this.props.quickSort([...this.state.arr]);
+        let steps = [];
+        let sorted = this.props.quickSort(this.state.arr, steps);
         console.log(sorted)
     }
 
@@ -33,7 +34,6 @@ class Bars extends React.Component {
     }
 
     populateArray(size = this.state.size) {
-        console.log('called..')
         let unsorted = [];
         let randNum = 23;
         for (let i = 0; i < size; i++) {
