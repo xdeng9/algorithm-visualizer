@@ -18,7 +18,8 @@ class Bars extends React.Component {
 
     handleSort(e) {
         e.preventDefault();
-        this.props.quickSort(this.state.arr);
+        let sorted = this.props.quickSort([...this.state.arr]);
+        console.log(sorted)
     }
 
     componentDidMount() {
