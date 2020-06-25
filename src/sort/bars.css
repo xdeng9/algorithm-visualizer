@@ -37,4 +37,9 @@
 
 .i-bar {
     background-color: indigo;
+    margin-right: 1px;
+}
+
+.sorted {
+    background-color: mediumseagreen;
 }

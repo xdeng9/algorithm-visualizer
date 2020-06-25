@@ -7,9 +7,9 @@ class Bars extends React.Component {
         super(props);
         this.state = {
             arr: [],
-            min: 5,
-            max: 600,
-            size: 300
+            min: 10,
+            max: 500,
+            size: 250
         }
 
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -18,6 +18,7 @@ class Bars extends React.Component {
 
     handleSort(e) {
         e.preventDefault();
+        this.props.quickSort(this.state.arr);
     }
 
     componentDidMount() {
@@ -28,7 +29,7 @@ class Bars extends React.Component {
         let unsorted = [];
         let randNum = 23;
         for (let i = 0; i < size; i++) {
-            randNum = Math.floor(Math.random() * (2 * size))
+            randNum = Math.floor(Math.random() * (this.state.max + 100)) + 1;
             unsorted.push(randNum);
         }
         this.setState({ arr: unsorted, size });
@@ -39,6 +40,7 @@ class Bars extends React.Component {
     }
 
     render() {
+        let w = Math.floor(1200 / this.state.size) + 'px';
         return (
             <div className="bars-container">
                 <div className="bars-controll">
@@ -58,9 +60,13 @@ class Bars extends React.Component {
                 </div>
                 <div className="bar-graph">
                     {this.state.arr.map((val, idx) => {
+                        let h = val + 'px';
                         return (
-                            <div className="i-bar" id={idx} key={idx}>
-                                
+                            <div 
+                                className="i-bar" 
+                                id={idx} 
+                                key={idx}
+                                style={{ width: w, height: h }}>
                             </div>
                         )
                     })}

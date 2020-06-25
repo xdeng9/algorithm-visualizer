@@ -12,9 +12,13 @@ class QuickSort extends React.Component {
         document.getElementById('mergesort').classList.remove('active');
     }
 
+    quickSort(array) {
+        console.log(array)
+    }
+
     render() {
         return (
-            <Bars type="quicksort"/>
+            <Bars type="quicksort" quickSort={this.quickSort}/>
         )
     }
 }
