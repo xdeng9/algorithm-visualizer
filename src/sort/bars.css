@@ -40,10 +40,17 @@
 }
 
 .i-bar {
-    background-color: indigo;
     margin-right: 1px;
+}
+
+.unsorted {
+    background-color: indigo;
 }
 
 .sorted {
     background-color: mediumseagreen;
+}
+
+.swapped {
+    background-color: mediumvioletred;
 }

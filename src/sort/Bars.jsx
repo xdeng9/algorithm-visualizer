@@ -22,11 +22,45 @@ class Bars extends React.Component {
         if (this.state.arr.length !== 0) this.populateArray();   
     }
 
+    animateSort(steps) {
+        
+        for (let i = 0; i < steps.length; i++) {
+            
+            setTimeout(() => {
+                let step = steps[i];
+                let el1 = document.getElementById(step[0]);
+                let el2 = document.getElementById(step[1]);
+                el1.classList.add('swapped');
+                el2.classList.add('swapped');
+                let h1 = el1.clientHeight;
+                let h2 = el2.clientHeight;
+                let temp = h1;
+                el1.style.height = `${h2}px`;
+                el2.style.height = `${temp}px`;
+
+                if (step[2] === 'g') {
+                    el1.classList.add('sorted');
+                    el1.classList.remove('unsorted');
+                } 
+                el1.classList.remove('swapped');
+                el2.classList.remove('swapped');
+                
+            }, i * 25);
+        }
+    }
+
     handleSort(e) {
         e.preventDefault();
         let steps = [];
-        let sorted = this.props.quickSort(this.state.arr, steps);
-        console.log(sorted)
+        let sort = [...this.state.arr];
+
+        if (this.props.type === 'quicksort') {
+            this.props.quickSort(sort, 0, sort.length - 1, steps);
+            this.animateSort(steps);
+        } else if (this.props.type === 'quicksort') {
+            console.log('merge sort placeholder')
+        }
+        
     }
 
     componentDidMount() {
@@ -74,7 +108,7 @@ class Bars extends React.Component {
                         let h = val + 'px';
                         return (
                             <div 
-                                className="i-bar" 
+                                className="i-bar unsorted" 
                                 id={idx} 
                                 key={idx}
                                 style={{ width: w, height: h }}>

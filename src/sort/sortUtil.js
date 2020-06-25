@@ -1,19 +1,20 @@
-export function partition(arr, steps) {
-    let pivot = arr[arr.length - 1];
-    let left = 0;
-    let right = arr.length - 2;
-    while (left <= right) {
-        if (arr[left] > pivot && arr[right] < pivot) {
-            swap(arr, left, right, steps);
-            left++;
-            right--;
-        } else if (arr[left] <= pivot) left++;
-        else right--;
+export function partition(arr, i, j, steps) {
+    let pivot = arr[j];
+    let pivotIndex = j;
+    j--;
+    while (i <= j) {
+        if (arr[i] > pivot && arr[j] < pivot) {
+            swap(arr, i, j, steps, 'r');
+            i++;
+            j--;
+        } else if (arr[i] <= pivot) i++;
+        else j--;
     }
-    swap(arr, left, arr.length - 1, steps);
-    return left;
+    swap(arr, i, pivotIndex, steps, 'g');
+    return i;
 }
 
-function swap(arr, i, j, steps) {
+function swap(arr, i, j, steps, color) {
     [arr[i], arr[j]] = [arr[j], arr[i]];
+    steps.push([i, j, color]);
 }

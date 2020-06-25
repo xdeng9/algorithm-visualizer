@@ -13,17 +13,20 @@ class QuickSort extends React.Component {
         document.getElementById('mergesort').classList.remove('active');
     }
 
-    quickSort(array, steps) {
-        if (array.length <= 1) return array;
+    quickSort(array, i = 0, j = array.length - 1, steps) {
+        if (i >= j) {
+            if (i >= 0 && i < array.length)
+                steps.push([i, i, 'g']);
+            return array;
+        }
 
-        let pivotIndex = partition(array, steps);
+        let pivot = partition(array, i, j, steps);
         
-        let leftArr = this.quickSort(array.slice(0, pivotIndex), steps);
-        let rightArr = this.quickSort(array.slice(pivotIndex + 1), steps);
+        this.quickSort(array, i, pivot - 1, steps);
+        this.quickSort(array, pivot + 1, j, steps);
 
-        return leftArr.concat([array[pivotIndex]]).concat(rightArr);
+        return array
     }
-
 
     render() {
         return (
