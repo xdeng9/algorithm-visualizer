@@ -61,6 +61,24 @@ class Bars extends React.Component {
         }
     }
 
+    animateMerge(steps) {
+        this.resetAnimation();
+        for (let i = 0; i < steps.length; i++) {
+            setTimeout(() => {
+                let step = steps[i];
+                let el1 = document.getElementById(step[0]);
+                let color = step[2];
+
+                if (color === 'g') {
+                    el1.style.height = `${step[1]}px`;
+                    el1.classList.add('sorted');
+                    el1.classList.remove('unsorted');
+                }
+
+            }, i * 25 + 100);
+        }
+    }
+
     handleSort(e) {
         e.preventDefault();
         let steps = [];
@@ -74,14 +92,14 @@ class Bars extends React.Component {
             this.animateSort(steps);
         } else if (this.props.type === 'mergesort') {
             this.props.mergeSort(sort, 0, sort.length - 1, [...sort], steps);
-            console.log(steps)
+            this.animateMerge(steps);
         }
-        // this.animateSort(steps);
+        let timeout = this.props.type === 'mergesort' ? 25 : 50;
         setTimeout(() => {
             this.setState({ controllDisabled: false, arr: sort })
             document.querySelector('.menu-list').classList.remove('disable');
             document.querySelector('.title').classList.remove('disable');
-        }, 50 * steps.length + 600);
+        }, timeout * steps.length + 500);
     }
 
     componentDidMount() {
