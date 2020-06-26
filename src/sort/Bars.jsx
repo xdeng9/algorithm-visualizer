@@ -71,10 +71,12 @@ class Bars extends React.Component {
 
         if (this.props.type === 'quicksort') {
             this.props.quickSort(sort, 0, sort.length - 1, steps);
+            this.animateSort(steps);
         } else if (this.props.type === 'mergesort') {
-            // this.props.mergeSort(sort, 0, sort.length - 1, steps);
+            this.props.mergeSort(sort, 0, sort.length - 1, [...sort], steps);
+            console.log(sort)
         }
-        this.animateSort(steps);
+        // this.animateSort(steps);
         setTimeout(() => {
             this.setState({ controllDisabled: false, arr: sort })
             document.querySelector('.menu-list').classList.remove('disable');

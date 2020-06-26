@@ -13,15 +13,12 @@ class MergeSort extends React.Component {
         document.getElementById('quicksort').classList.remove('active');
     }
 
-    mergeSort(arr, i, j, steps) {
-        if (arr.length <= 1) {
-            
-            return arr;
-        }
-
-        let mid = (i + j) >> 1;
-        let left = arr.slice(0, mid);
-        let right = arr.slice(mid);
+    mergeSort(arr, lo, hi, arr2, steps) { 
+        if (lo === hi) return;
+        let mid = (lo + hi) >> 1;
+        this.mergeSort(arr2, lo, mid, arr, steps);
+        this.mergeSort(arr2, mid + 1, hi, arr, steps);
+        merge(arr, lo, mid, hi, arr2, steps);
     }
 
     render() {
