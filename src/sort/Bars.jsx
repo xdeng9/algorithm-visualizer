@@ -74,7 +74,7 @@ class Bars extends React.Component {
             this.animateSort(steps);
         } else if (this.props.type === 'mergesort') {
             this.props.mergeSort(sort, 0, sort.length - 1, [...sort], steps);
-            console.log(sort)
+            console.log(steps)
         }
         // this.animateSort(steps);
         setTimeout(() => {

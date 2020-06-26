@@ -30,7 +30,7 @@ export function merge(arr, lo, mid, hi, arr2, steps) {
     }
     while (i <= mid) {
         steps.push([i, i, 'r']);
-        steps.push([k, arr2[i]], 'g');
+        steps.push([k, arr2[i], 'g']);
         arr[k++] = arr2[i++];
     }
     while (j <= hi) {
