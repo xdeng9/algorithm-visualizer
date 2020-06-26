@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/algorithm-visualizer/static/css/main.12e79940.chunk.css",
-    "main.js": "/algorithm-visualizer/static/js/main.04770113.chunk.js",
-    "main.js.map": "/algorithm-visualizer/static/js/main.04770113.chunk.js.map",
+    "main.css": "/algorithm-visualizer/static/css/main.2a0856ce.chunk.css",
+    "main.js": "/algorithm-visualizer/static/js/main.b25e3ed6.chunk.js",
+    "main.js.map": "/algorithm-visualizer/static/js/main.b25e3ed6.chunk.js.map",
     "runtime-main.js": "/algorithm-visualizer/static/js/runtime-main.71f37785.js",
     "runtime-main.js.map": "/algorithm-visualizer/static/js/runtime-main.71f37785.js.map",
-    "static/js/2.a383e943.chunk.js": "/algorithm-visualizer/static/js/2.a383e943.chunk.js",
-    "static/js/2.a383e943.chunk.js.map": "/algorithm-visualizer/static/js/2.a383e943.chunk.js.map",
+    "static/js/2.425c172f.chunk.js": "/algorithm-visualizer/static/js/2.425c172f.chunk.js",
+    "static/js/2.425c172f.chunk.js.map": "/algorithm-visualizer/static/js/2.425c172f.chunk.js.map",
     "index.html": "/algorithm-visualizer/index.html",
-    "precache-manifest.dfb722f7a650c1dd347631e0754d10e1.js": "/algorithm-visualizer/precache-manifest.dfb722f7a650c1dd347631e0754d10e1.js",
+    "precache-manifest.d5d09fd53323922660a0b6619413d850.js": "/algorithm-visualizer/precache-manifest.d5d09fd53323922660a0b6619413d850.js",
     "service-worker.js": "/algorithm-visualizer/service-worker.js",
-    "static/css/main.12e79940.chunk.css.map": "/algorithm-visualizer/static/css/main.12e79940.chunk.css.map",
-    "static/js/2.a383e943.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.a383e943.chunk.js.LICENSE.txt",
+    "static/css/main.2a0856ce.chunk.css.map": "/algorithm-visualizer/static/css/main.2a0856ce.chunk.css.map",
+    "static/js/2.425c172f.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.425c172f.chunk.js.LICENSE.txt",
     "static/media/grid.css": "/algorithm-visualizer/static/media/star-solid.b3fc4d18.svg",
     "static/media/queen.css": "/algorithm-visualizer/static/media/queen.cf14e21e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.71f37785.js",
-    "static/js/2.a383e943.chunk.js",
-    "static/css/main.12e79940.chunk.css",
-    "static/js/main.04770113.chunk.js"
+    "static/js/2.425c172f.chunk.js",
+    "static/css/main.2a0856ce.chunk.css",
+    "static/js/main.b25e3ed6.chunk.js"
   ]
 }
