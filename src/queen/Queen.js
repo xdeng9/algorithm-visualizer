@@ -126,8 +126,10 @@ class Queen extends React.Component {
     }
 
     handleUpdate(e) {
-       this.reset();
-       let val = parseInt(e.currentTarget.value);
+        let val = parseInt(e.currentTarget.value);
+        if (isNaN(val) || val < 4 || val > 23) return;
+
+        this.reset();
         this.setState({
             row: val,
             col: val
