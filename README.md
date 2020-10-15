@@ -1,7 +1,7 @@
 # Algorithm Visualizer
 [Try it out here](https://joedeng.me/algorithm-visualizer/#/)
 
-Algorithm Visualizer is a tool for visualizing different algorithms (see demos below). This app is built using JavaScript and React.
+Algorithm Visualizer is an app for visualizing different algorithms (see demos below). This app is built using JavaScript and React.
 
 ## Algorithms:
 - Dijkstra's Algorithm - an algorithm for finding the shortest path. Implemented it with a binary min-heap priority queue.
