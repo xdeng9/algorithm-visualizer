@@ -18,8 +18,8 @@ class Home extends React.Component {
                 <div className="modal" id="modal">
                     <div className="modal-guts">
                         <h1>About</h1>
-                        <p>Hello, thank you for checking out algorithm visualizer, a tool for visualizing different algorithms. 
-                            I created this tool because I think this is
+                        <p>Hello, thank you for checking out algorithm visualizer, an app for visualizing different algorithms. 
+                            I created this app because I think this is
                             a great way to solidify my understanding of how different algorithms work.</p>
                         <p>To get started, click on any of the algorithms from the top menu, and click the start button
                             to see it in action. 
